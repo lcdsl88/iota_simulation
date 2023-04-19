@@ -40,10 +40,10 @@ def print_graph(self):
     #Coloring of nodes
     tips = self.get_tips()
     for tip in tips:
-        # self.DG.node[tip]["node_color"] = '#ffdbb8'
+        #self.DG.node[tip]["node_color"] = '#ffdbb8'
         self.DG.node[tip]["node_color"] = self.agent_tip_colors[int(str(tip.agent))]
 
-    # col = list(nx.get_node_attributes(self.DG, 'node_color').values()) #Didn't work on Linux
+    col = list(nx.get_node_attributes(self.DG, 'node_color').values()) #Didn't work on Linux
     col = []
     for transaction in self.DG:
         col.append(self.DG.node[transaction]["node_color"])
@@ -156,7 +156,7 @@ def print_tips_over_time_multiple_agents_with_tangle(self, no_current_transactio
     labels = {
         transaction: str(str(np.round(transaction.exit_probability_multiple_agents[transaction.agent], 2)) + "  " +
                          str(np.round(transaction.confirmation_confidence_multiple_agents[transaction.agent], 2)))
-        for transaction in self.DG.nodes if transaction.agent != None
+        for transaction in self.DG.nodes if transaction.agent != None        
     }
     #For genesis take agent 0 as default (always same value)
     labels[self.transactions[0]] = str(np.round(self.transactions[0].exit_probability_multiple_agents[self.agents[0]],2))
@@ -164,16 +164,16 @@ def print_tips_over_time_multiple_agents_with_tangle(self, no_current_transactio
     #col = [['r','b'][int(np.round(transaction.confirmation_confidence,1))] for transaction in self.DG.nodes()] #Color change for 100% confidence
 
     #Coloring of tips
-    tips = self.get_tips()
-    for tip in tips:
-        # self.DG.node[tip]["node_color"] = '#ffdbb8'
-        self.DG.node[tip]["node_color"] = self.agent_tip_colors[int(str(tip.agent))]
+    #tips = self.get_tips()
+    #for tip in tips:
+        #self.DG.node[tip]["node_color"] = '#ffdbb8'
+    #    self.DG.node[tip]["node_color"] = self.agent_tip_colors[int(str(tip.agent))]
 
     #Didn't work on Linux
-    # col = list(nx.get_node_attributes(self.DG, 'node_color').values())
-    col = []
-    for transaction in self.DG:
-        col.append(self.DG.node[transaction]["node_color"])
+    col = list(nx.get_node_attributes(self.DG, 'node_color').values())
+    #col = []
+    #for transaction in self.DG:
+        #col.append(self.DG.node[transaction]["node_color"])
 
     #Creating figure
     #plt.figure(figsize=(12, 6))
