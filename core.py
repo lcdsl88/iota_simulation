@@ -38,10 +38,10 @@ runs = 1
 for i in range(runs):
 
     #simu2 = Multi_Agent_Simulation(800, 50, 2, 0.1, 1, "weighted", _printing=True)
-    simu2 = Multi_Agent_Simulation(10, 1, 2, 0.1, 1, "weighted", _printing=True)
+    simu2 = Multi_Agent_Simulation(100, 50, 2, 0.1, 1, "weighted", _printing=True)
     simu2.setup()
     simu2.run()
-    # csv_export(simu2)
+    csv_export(simu2)
 
 print("TOTAL simulation time: " + str(np.round(timeit.default_timer() - start_time, 3)) + " seconds\n")
 
